@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card Design</title>
+    <style>
+        body {
+            background-color: #f6f6f6;
+        }
+
+        .main-heading {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .bold {
+            color: red;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 5px;
+            border-radius: 30px;
+            padding: 5px;
+        }
+
+        .product {
+            height: 250px;
+            padding: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .btn {
+            border-radius: 50px;
+            padding: 15px;
+            border: 2px solid black;
+        }
+
+        .btn:hover {
+            border: 5px solid black;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .product-title {
+            text-align: center;
+        }
+
+        .description {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .rate {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .incdec {
+            height: 30px;
+        }
+
+        .quantity {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quant {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="main-heading">The Sale is <span class="bold">LIVE</span> Now!</h1>
+    <div class="cards">
+        
+        <div class="card">
+            <img src="pink-shirt.png" class="product" id="shirt">
+            <div class="buttons">
+                <button type="button" class="btn red" onclick="redShirt()"></button>
+                <button type="button" class="btn pink" onclick="pinkShirt()"></button>
+                <button type="button" class="btn blue" onclick="blueShirt()"></button>
+                <button type="button" class="btn green" onclick="greenShirt()"></button>
+            </div>
+            <h2 class="product-title">Polo-Neck Tshirt</h2>
+            <p class="description">
+                Most Popular Polo-Neck T-Shirt available in multiple colours.
+            </p>
+            <p class="rate" id="srate">Cost: 1 x 500 = Rs. 500/-</p>
+            <div class="quantity">
+                <img src="minus.png" class="incdec" id="increment" onclick="sdec()" />
+                <p id="squant" class="quant"> 1 </p>
+                <img src="plus.png" class="incdec" id="increment" onclick="sinc()" />
+            </div>
+            <br/>
+        </div>
+
+        <div class="card">
+            <img src="indian.png" class="product">
+            
+            <h2 class="product-title">Indian Attire</h2>
+            <p class="description">
+                Most Popular Indian attire that is saree and kurta pyjamas!
+            </p>
+            <p class="rate" id="rate">Cost: 1 x 1500 = Rs. 1500/-</p>
+            <div class="quantity">
+                <img src="minus.png" class="incdec" id="increment" onclick="dec()" />
+                <p id="quant" class="quant"> 1 </p>
+                <img src="plus.png" class="incdec" id="increment" onclick="inc()" />
+            </div>
+            <br/>
+        </div>
+
+        <div class="card">
+            <img src="pink-dress.png" class="product" id="dress">
+            <div class="buttons">
+                <button type="button" class="btn red" onclick="redDress()"></button>
+                <button type="button" class="btn pink" onclick="pinkDress()"></button>
+                <button type="button" class="btn blue" onclick="blueDress()"></button>
+                <button type="button" class="btn green" onclick="greenDress()"></button>
+            </div>
+            <h2 class="product-title">Long Dress</h2>
+            <p class="description">
+                Most Popular Long Dresses available in multiple colours.
+            </p>
+            <p class="rate" id="drate">Cost: 1 x 900 = Rs. 900/-</p>
+            <div class="quantity">
+                <img src="minus.png" class="incdec" id="increment" onclick="ddec()" />
+                <p id="dquant" class="quant"> 1 </p>
+                <img src="plus.png" class="incdec" id="increment" onclick="dinc()" />
+            </div>
+            <br/>
+        </div>
+
+    </div>
+    <script>
+        function redShirt() {
+            const colour = document.getElementById("shirt");
+            colour.src = "red-shirt.png";
+        }
+        function pinkShirt() {
+            const colour = document.getElementById("shirt");
+            colour.src = "pink-shirt.png";
+        }
+        function blueShirt() {
+            const colour = document.getElementById("shirt");
+            colour.src = "blue-shirt.png";
+        }
+        function greenShirt() {
+            const colour = document.getElementById("shirt");
+            colour.src = "green-shirt.png";
+        }
+
+        function sinc() {
+            const quantityText = document.getElementById("squant");
+            const cost =document.getElementById("srate");
+            let quantity = parseInt(quantityText.innerText);
+            if (quantity < 10) {
+                quantityText.innerText = ++quantity;
+            }
+            else {
+                alert("You cannot order more than 10 items");
+            }
+            cost.innerText=`Cost: ${quantity} x 500 = Rs. ${quantity*500}/- `;
+        }
+
+        function sdec() {
+            const quantityText = document.getElementById("squant");
+            const cost =document.getElementById("srate");
+            let quantity = parseInt(quantityText.innerText);
+            if (quantity > 1) {
+                quantityText.innerText = --quantity;
+            }
+            else {
+                alert("You cannot order less than 1 item");
+            }
+            cost.innerText=`Cost: ${quantity} x 500 = Rs. ${quantity*500}/- `;
+        }
+
+        function redDress() {
+            const colour = document.getElementById("dress");
+            colour.src = "red-dress.png";
+        }
+        function pinkDress() {
+            const colour = document.getElementById("dress");
+            colour.src = "pink-dress.png";
+        }
+        function blueDress() {
+            const colour = document.getElementById("dress");
+            colour.src = "blue-dress.png";
+        }
+        function greenDress() {
+            const colour = document.getElementById("dress");
+            colour.src = "green-dress.png";
+        }
+
+        function dinc() {
+            const quantityText = document.getElementById("dquant");
+            const cost =document.getElementById("drate");
+            let quantity = parseInt(quantityText.innerText);
+            if (quantity < 10) {
+                quantityText.innerText = ++quantity;
+            }
+            else {
+                alert("You cannot order more than 10 items");
+            }
+            cost.innerText=`Cost: ${quantity} x 900 = Rs. ${quantity*900}/- `;
+        }
+
+        function ddec() {
+            const quantityText = document.getElementById("dquant");
+            const cost =document.getElementById("drate");
+            let quantity = parseInt(quantityText.innerText);
+            if (quantity > 1) {
+                quantityText.innerText = --quantity;
+            }
+            else {
+                alert("You cannot order less than 1 item");
+            }
+            cost.innerText=`Cost: ${quantity} x 900 = Rs. ${quantity*900}/- `;
+        }
+        function inc(){
+            const quantityText=document.getElementById("quant");
+            const cost =document.getElementById("rate");
+            let quantity=parseInt(quantityText.innerText);
+            if(quantity<10){
+                quantityText.innerText=++quantity;
+            }
+            else{
+                alert("You cannot order more than 10 items");
+            }
+            cost.innerText=`Cost: ${quantity} x 1500 = Rs. ${quantity*1500}/- `;        
+        }
+
+        function dec(){
+            const quantityText=document.getElementById("quant");
+            const cost =document.getElementById("rate");
+            let quantity=parseInt(quantityText.innerText);
+            if(quantity>1){
+                quantityText.innerText=--quantity;
+            }
+            else{
+                alert("You cannot order less than 1 item");
+            }
+            cost.innerText=`Cost: ${quantity} x 1500 = Rs. ${quantity*1500}/- `;
+        }
+    </script>
+
+</body>
+
+</html>
